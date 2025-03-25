@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renter Management System - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link data-n-head="ssr" rel="icon" type="image/x-icon" href="image.png">
+</head>
+<style>
+    
+.actionone {
+  color: orange;
+  text-decoration: underline;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+</style>
+
+<body>
+
+ <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Admin Panel</a>
+      <ul class="nav-links">
+        <li><a class="google1" href="Admin.html">Home</a></li>
+        <li><a class="google2"href="FirstFloor.html">FirstFloor</a></li>
+        <li><a class="google3"href="SecondFloor.html">SecondFloor</a></li>
+        <li><a class="google4"href="TopFloor.html">TopFloor</a></li>
+        <li><a class="google5"href="contact.html">Contact</a></li>
+        <div class="login">
+          <a class="loginleft" href="#" onclick="navigateToPage();">Signout</a>
+        </div>
+      </ul>
+      <div class="burger" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </div>
+    </div>
+  </nav>
+    <br>
+    <section class="home">
+        <div class="containters">
+            <div class="box1">
+                <img src="home.png" alt="">
+                <h5>Home Floor</h5>
+                <span>3</span>
+            </div>
+            <div class="box1">
+                <img src="floor.png" alt="">
+                <h5>Total Floor done</h5>
+                <span> 1</span>
+            </div>
+            <div class="box1">
+                <img src="income.png" alt="">
+                <h5>Room Cost</h5>
+                <span>3,300</span>
+            </div>
+            <div class="box1">
+                <img src="roonbooked.png" alt="">
+                <h5>Room Booked</h5>
+                <span>6</span>
+            </div>
+            <div class="box1">
+                <img src="notbooked.png" alt="">
+                <h5>Room left</h5>
+                <span>4</span>
+            </div>
+        </div>
+    </section>
+    <section class="firstfloordetails">
+        <h1 class="heading">
+            First Floor Details
+        </h1>
+        <div class="check">
+
+            <select id="year">
+                <option value="01" selected>01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            <select id="cars">
+                <option value="December">December</option>
+                <option value="November">November</option>
+                <option value="October">October</option>
+                <option value="September">September</option>
+                <option value="August">August</option>
+                <option value="July">July</option>
+                <option value="June">June</option>
+                <option value="May">May</option>
+                <option value="April">April</option>
+                <option value="March">March</option>
+                <option value="Febreury">Febreury</option>
+                <option value="January" selected>January</option>
+            </select>
+            <select id="years">
+                <option value="2024" selected>2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+            </select>
+            <button class="btn">Check</button>
+            <button class="btn">Add</button>
+        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Months/Date</th>
+                <th>Electricity Bill/Room Bill</th>
+                <th>Total</th>
+                <th>Done/Left</th>
+            </tr>
+            <tr>
+                <td>Ravi Srivatava</td>
+                <td>26 December 2024</td>
+                <td>24 unit / ₹3000</td>
+                <td>₹3168</td>
+                <td style="color:green;">Completed</td>
+            </tr>
+            <tr>
+                <td>Rahul Srivatava</td>
+                <td>----</td>
+                <td>----</td>
+                <td>----</td>
+                <td>-----</td>
+            </tr>
+            <tr>
+                <td>Ernst Handel</td>
+                <td>Roland Mendel</td>
+                <td>Austria</td>
+            </tr>
+            <tr>
+                <td>Island Trading</td>
+                <td>Helen Bennett</td>
+                <td>UK</td>
+            </tr>
+            <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>Yoshi Tannamuri</td>
+                <td>Canada</td>
+            </tr>
+            <tr>
+                <td>Magazzini Alimentari Riuniti</td>
+                <td>Giovanni Rovelli</td>
+                <td>Italy</td>
+            </tr>
+        </table>
+
+    </section>
+
+    <section class="FooterDetails">
+        <footer class="last">
+            <p>Admin Panel : Renter Management Panel <span>&copy; Made by Anuj kumar prajapati (AKP) Developer</span>
+            </p>
+        </footer>
+    </section>
+</body>
+<script src="script.js"></script>
+<script>function showForm() {
+        const form = document.getElementsByClassName('loginleft');
+        if (form.length > 0) {
+            window.location.href = "login.html";
+        }
+    }
+
+    document.querySelector("button").addEventListener("click", function () {
+        let selectedMonth = document.getElementById("cars").value;
+        let selectedYear = document.getElementById("year").value;
+
+        let table = document.querySelector("table");
+        let rows = table.getElementsByTagName("tr");
+
+        // Loop through table rows and filter
+        for (let i = 1; i < rows.length; i++) {
+            let columns = rows[i].getElementsByTagName("td");
+            if (columns.length > 1) {
+                let monthDateColumn = columns[1].innerText; // Assuming the second column contains date-related info
+
+                if (monthDateColumn.includes(selectedMonth) && monthDateColumn.includes(selectedYear)) {
+                    rows[i].style.display = ""; // Show row if match found
+                } else {
+                    rows[i].style.display = "none"; // Hide row if no match
+                }
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const addButton = document.querySelector("button:nth-of-type(2)");
+        const checkButton = document.querySelector("button:nth-of-type(1)");
+        const daySelect = document.getElementById("year");
+        const monthSelect = document.getElementById("cars");
+        const yearSelect = document.getElementById("years");
+        const table = document.querySelector("table");
+
+        // Load existing data from localStorage on page load
+        loadTableData();
+
+        addButton.addEventListener("click", function () {
+            const name = prompt("Enter Name:");
+            if (!name) return;
+
+            const electricityBill = prompt("Enter Electricity Bill (units / amount):");
+            if (!electricityBill) return;
+
+            const total = prompt("Enter Total Amount:");
+            if (!total) return;
+
+            const status = prompt("Enter Status (Completed/Left):");
+            if (!status) return;
+
+            const selectedDate = `${daySelect.value} ${monthSelect.value} ${yearSelect.value}`;
+
+            const newData = {
+                name,
+                date: selectedDate,
+                electricityBill,
+                total,
+                status
+            };
+
+            // Get existing data from localStorage
+            let storedData = JSON.parse(localStorage.getItem("floorDetails")) || [];
+            storedData.push(newData);
+            localStorage.setItem("floorDetails", JSON.stringify(storedData));
+
+            // Reload table with updated data
+            loadTableData();
+        });
+
+        checkButton.addEventListener("click", function () {
+            loadTableData();
+        });
+
+        function loadTableData() {
+            const storedData = JSON.parse(localStorage.getItem("floorDetails")) || [];
+
+            // Clear table except headers
+            const rows = table.querySelectorAll("tr:not(:first-child)");
+            rows.forEach(row => row.remove());
+
+            // Add stored data to the table
+            storedData.forEach(data => {
+                const newRow = table.insertRow();
+                newRow.innerHTML = `
+              <td>${data.name}</td>
+              <td>${data.date}</td>
+              <td>${data.electricityBill}</td>
+              <td>₹${data.total}</td>
+              <td style="color:${data.status.toLowerCase() === 'completed' ? 'red' : 'green'};">${data.status}</td>
+          `;
+            });
+        }
+    });
+</script>
+
+</html>

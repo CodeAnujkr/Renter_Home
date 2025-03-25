@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style2.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link data-n-head="ssr" rel="icon" type="image/x-icon" href="image.png">
+  <title>Renter Management System - Renter</title>
+</head>
+<style>
+  /* General form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Input fields styling */
+  form input[type="text"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+  form input[type="text"]:focus,
+  form input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  /* Checkbox styling */
+  form label input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  /* Button styling */
+  form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    form {
+      width: 90%;
+      padding: 20px;
+    }
+
+    form button {
+      width: 100%;
+    }
+  }
+
+  /* Form headings styling */
+  form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  /* Label styling */
+  form label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    align-self: flex-start;
+  }
+</style>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Renter Panel</a>
+      <ul class="nav-links">
+        <li><a class="google1" href="Admin.html">Home</a></li>
+        <li><a class="google2" href="Services.html">Services</a></li>
+        <li><a  class="google3" href="contact.html">Contact</a></li>
+        <div class="login">
+          <a class="loginleft" href="#" onclick="send(); navigateToPage();">Signout</a>
+        </div>
+      </ul>
+      <div class="burger" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+  <div class="formadmin" id="adminForm">
+    <center>
+      <h1 style="padding-bottom: 23px;">Login for Frist floor Details</h1>
+    </center>
+    <form id="admin">
+      <label for="name">Name</label>
+      <input type="text" id="adminName">
+      <br>
+      <label for="number">Password</label>
+      <input type="password" id="adminPassword">
+      <label><input type="checkbox" name="" id="">
+        Remember password
+      </label>
+      <button type="button" onclick="showForm('renter')">FristFloor</button>
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div class="formrenter" id="renterForm" style="display: none;">
+    <center>
+      <h1 style="padding-bottom: 23px;">Login for Second floor Details</h1>
+    </center>
+    <form id="Renter">
+      <label for="name">Name</label>
+      <input type="text" id="renterName">
+      <br>
+      <label for="number">Password</label>
+      <input type="password" id="renterPassword">
+
+      <label><input type="checkbox" name="" id="">
+        Remember password
+      </label>
+      <button type="button" onclick="showForm('admin')">SecondFloor</button>
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  </div>
+  <br>
+  <div class="formrenter" id="renterFormN">
+    <center>
+      <h1 style="padding-bottom: 23px;">Login for Ground floor Details</h1>
+    </center>
+    <form id="Ground">
+      <label for="name">Name</label>
+      <input type="text" id="renterName">
+      <br>
+      <label for="number">Password</label>
+      <input type="password" id="GroundPassword">
+
+      <label><input type="checkbox" name="" id="">
+        Remember password
+      </label>
+      <!-- <button type="button" onclick="showForm('adminN')">Admin</button> -->
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  </div>
+</body>
+<script src="script2.js"></script>
+<script>
+  function send() {
+    console.log("Signout function triggered");
+
+  }
+
+  function navigateToPage() {
+    window.location.href = "login.html";
+  }
+  function showForm(formType) {
+    const adminForm = document.getElementById('adminForm');
+    const renterForm = document.getElementById('renterForm');
+    const renterFormN = document.getElementById('renterFormN');
+
+    if (formType === 'admin') {
+      adminForm.style.display = 'block';
+      renterForm.style.display = 'none';
+      renterFormN.style.display = 'none';
+    } else if (formType === 'renter') {
+      adminForm.style.display = 'none';
+      renterForm.style.display = 'block';
+      renterFormN.style.display = 'none';
+    } else if (formType === 'adminN') {
+      adminForm.style.display = 'none';
+      renterForm.style.display = 'none';
+      renterFormN.style.display = 'block';
+    }
+  }
+
+  document.getElementById('admin').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const adminPassword = document.getElementById('adminPassword').value;
+            const correctAdminPassword = 'First123'; // Replace with your desired admin password
+    
+            if (adminPassword === correctAdminPassword) {
+                window.location.href = "First.html"
+            } else {
+                alert('Incorrect admin password!');
+            }
+        });
+    
+        document.getElementById('Renter').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const renterPassword = document.getElementById('renterPassword').value;
+            const correctRenterPassword = 'Second5678'; // Replace with your desired renter password
+    
+            if (renterPassword === correctRenterPassword) {
+                window.location.href = "Second.html"
+            } else {
+                alert('Incorrect renter password!');
+            }
+        });
+        document.getElementById('Ground').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const renterPassword = document.getElementById('GroundPassword').value;
+            const correctRenterPassword = 'ground988'; // Replace with your desired renter password
+    
+            if (renterPassword === correctRenterPassword) {
+                window.location.href = "Ground.html"
+            } else {
+                alert('Incorrect renter password!');
+            }
+        });
+</script>
+
+</html>

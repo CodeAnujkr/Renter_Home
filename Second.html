@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renter Management System - Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link data-n-head="ssr" rel="icon" type="image/x-icon" href="image.png">
+</head>
+<style>
+  .god {
+  color: orange;
+  text-decoration: underline;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+</style>
+<body>
+
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Renter Panel : SecondFloor</a>
+      <ul class="nav-links">
+        <li><a class="google1" href="Admin.html">Home</a></li>
+        <li><a class="google2"href="FirstFloor.html">FirstFloor</a></li>
+        <li><a class="google3"href="SecondFloor.html">SecondFloor</a></li>
+        <li><a class="google4"href="TopFloor.html">TopFloor</a></li>
+        <li><a class="google5"href="contact.html">Contact</a></li>
+        <div class="login">
+          <a class="loginleft" href="#" onclick="navigateToPage();">Signout</a>
+        </div>
+      </ul>
+      <div class="burger" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </div>
+    </div>
+  </nav>
+  
+
+  <br>
+  <section class="home">
+    <div class="containters">
+      <div class="box1">
+        <img src="home.png" alt="">
+        <h5>Home Floor</h5>
+        <span>3</span>
+      </div>
+      <div class="box1">
+        <img src="floor.png" alt="">
+        <h5>Total Floor done</h5>
+        <span> 1</span>
+      </div>
+      <div class="box1">
+        <img src="income.png" alt="">
+        <h5>Room Cost</h5>
+        <span>3,300</span>
+      </div>
+      <div class="box1">
+        <img src="roonbooked.png" alt="">
+        <h5>Room Booked</h5>
+        <span>6</span>
+      </div>
+      <div class="box1">
+        <img src="notbooked.png" alt="">
+        <h5>Room left</h5>
+        <span>4</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="actions check">
+    <button class="btn" id="addItem">Add Item</button>
+    <button class="btn" id="deleteSelected">Delete Selected</button>
+  </div>
+
+  <table id="itemTable">
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Name</th>
+        <th>Electricity bill / Room Bill</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be dynamically populated here -->
+    </tbody>
+  </table>
+  <script>
+    // Function to load items from localStorage
+    function loadItems() {
+      const items = JSON.parse(localStorage.getItem('items')) || [];
+      const tbody = document.querySelector('#itemTable tbody');
+      tbody.innerHTML = ''; // Clear the table before reloading the items
+
+      items.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+      <td><input type="checkbox" class="rowCheckbox" data-index="${index}"></td>
+      <td contenteditable="true" class="editable">${item.name}</td>
+      <td contenteditable="true" class="editable">${item.description}</td>
+      <td contenteditable="true" class="editable">${item.description}</td>
+
+      <td>
+        <button class="renameBtn">Rename</button>
+        <button class="deleteBtn">Delete</button>
+      </td>
+    `;
+        tbody.appendChild(row);
+      });
+
+      // Reattach event listeners for new rows
+      addEventListeners();
+    }
+
+    // Save items to localStorage
+    function saveItems(items) {
+      localStorage.setItem('items', JSON.stringify(items));
+    }
+
+    // Function to handle adding a new item
+    function addItem() {
+      const items = JSON.parse(localStorage.getItem('items')) || [];
+      const newItem = {
+        name: `Item ${items.length + 1}`,
+        description: 'Description'
+      };
+      items.push(newItem);
+      saveItems(items);
+      loadItems();
+    }
+
+    // Function to handle renaming an item
+    function renameItem(index) {
+      const items = JSON.parse(localStorage.getItem('items')) || [];
+      const row = document.querySelectorAll('.rowCheckbox')[index].closest('tr');
+      const nameCell = row.querySelector('td:nth-child(2)');
+      const descriptionCell = row.querySelector('td:nth-child(3)');
+
+      // Save the new values
+      items[index].name = nameCell.textContent;
+      items[index].description = descriptionCell.textContent;
+      saveItems(items);
+    }
+
+    // Function to delete an item
+    function deleteItem(index) {
+      const items = JSON.parse(localStorage.getItem('items')) || [];
+      items.splice(index, 1);
+      saveItems(items);
+      loadItems();
+    }
+
+    // Function to delete selected items
+    function deleteSelectedItems() {
+      const selectedCheckboxes = document.querySelectorAll('.rowCheckbox:checked');
+      const items = JSON.parse(localStorage.getItem('items')) || [];
+
+      selectedCheckboxes.forEach(checkbox => {
+        const index = checkbox.dataset.index;
+        items.splice(index, 1); // Remove selected item
+      });
+
+      saveItems(items);
+      loadItems();
+    }
+
+    // Add event listeners to buttons and rows
+    function addEventListeners() {
+      document.querySelectorAll('.renameBtn').forEach((button, index) => {
+        button.addEventListener('click', () => {
+          renameItem(index);
+        });
+      });
+
+      document.querySelectorAll('.deleteBtn').forEach((button, index) => {
+        button.addEventListener('click', () => {
+          deleteItem(index);
+        });
+      });
+    }
+
+    // Event listeners for the "Add Item" and "Delete Selected" buttons
+    document.getElementById('addItem').addEventListener('click', addItem);
+    document.getElementById('deleteSelected').addEventListener('click', deleteSelectedItems);
+
+    // Initial load of items from localStorage
+    loadItems();
+
+  </script>
+
+  <section class="FooterDetails">
+    <footer class="last">
+      <p>Admin Panel : Renter Management Panel <span>&copy; Made by Anuj kumar prajapati (AKP) Developer</span></p>
+    </footer>
+  </section>
+</body>
+<script src="script.js"></script>
+
+
+</html>
+</style>
